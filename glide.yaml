@@ -1,0 +1,6 @@
+package: github.com/utdta/website-backend
+import:
+- package: github.com/goware/cors
+- package: github.com/pressly/chi
+  subpackages:
+  - middleware

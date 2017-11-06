@@ -1,0 +1,20 @@
+hash: 4ac01469a7c8ca201dcca2ef572904e15f535589f1cb0c7fda96947dffb5d7d7
+updated: 2017-11-06T03:08:25.691046343-05:00
+imports:
+- name: github.com/go-chi/chi
+  version: 40c607ea5d9f34240e783bcdbb701e049fb666d6
+- name: github.com/go-chi/cors
+  version: dba6525398619dead495962a916728e7ee2ca322
+- name: github.com/go-sql-driver/mysql
+  version: fade21009797158e7b79e04c340118a9220c6f9e
+- name: github.com/goware/cors
+  version: dba6525398619dead495962a916728e7ee2ca322
+- name: github.com/jmoiron/sqlx
+  version: 3379e5993990b1f927fc8db926485e6f6becf2d2
+  subpackages:
+  - reflectx
+- name: github.com/pressly/chi
+  version: 40c607ea5d9f34240e783bcdbb701e049fb666d6
+  subpackages:
+  - middleware
+testImports: []

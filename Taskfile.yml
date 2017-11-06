@@ -1,0 +1,45 @@
+# # # # # # # # # # # # # #
+# Task Runner
+# # # # # # # # # # # # # #
+# github.com/go-task/task
+
+version:
+  silent: true
+  cmds:
+    - echo VERSION={{.GIT_COMMIT}}
+
+compile:
+  desc: Compiles the server
+  deps: [version]
+  silent: true
+  cmds:
+    - echo "compiling binary..."
+    - go build -ldflags "-X '{{.API_VERSION}}' -X '{{.API_BUILDTIME}}'" -o ./build/{{.API_MAIN_FILENAME}} ./{{.API_MAIN_FILENAME}}.go
+
+test_server:
+  desc: Runs the server
+  deps: [version]
+  silent: true
+  cmds:
+    - ./server
+  generates:
+    - ./server
+  env:
+    API_ENV: test
+    API_PORT: 3000
+    API_DB_NAME: dbname
+    API_DB_USER: dbuser
+    API_DB_PWD: dbpass
+    API_DB_HOST: dbhost
+    API_DB_PORT: 3001
+
+code_lines:
+  desc: Breakdown of source lines of code
+  cmds:
+    - find . -name '*.go' | xargs wc -l
+
+test:
+  desc: Runs the server tests
+  silent: true
+  cmds:
+    - go test test/*
