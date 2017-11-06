@@ -61,7 +61,9 @@ func EnvVars() []EnvVar {
 }
 
 func ExitOnError(e error) {
-	log.Panicf(`API failed during startup: %s`, e)
+	if e != nil {
+		log.Panicf(`API failed during startup: %s`, e)
+	}
 }
 
 // Checks if the required environment variables are set

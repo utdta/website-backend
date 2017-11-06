@@ -1,4 +1,4 @@
 GIT_COMMIT: {sh: git log -n 1 --format=%h}
 API_VERSION: github.com/utdta/website-backend/common.Version=`git rev-parse HEAD`
 API_BUILDTIME: github.com/utdta/website-backend/common.BuildTime=`date`
-API_MAIN_FILENAME: ./server
+API_MAIN_FILENAME: server

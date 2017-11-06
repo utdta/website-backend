@@ -10,20 +10,21 @@ version:
 
 compile:
   desc: Compiles the server
-  deps: [version]
   silent: true
   cmds:
     - echo "compiling binary..."
     - go build -ldflags "-X '{{.API_VERSION}}' -X '{{.API_BUILDTIME}}'" -o ./build/{{.API_MAIN_FILENAME}} ./{{.API_MAIN_FILENAME}}.go
+    - echo "binary compiled."
 
 test_server:
   desc: Runs the server
   deps: [version]
   silent: true
   cmds:
-    - ./server
+    - task: compile
+    - ./build/{{.API_MAIN_FILENAME}}
   generates:
-    - ./server
+    - ./build/{{.API_MAIN_FILENAME}}
   env:
     API_ENV: test
     API_PORT: 3000
